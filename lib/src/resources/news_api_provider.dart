@@ -7,7 +7,7 @@ import 'dart:convert';
 class NewsApiProvider implements Source{
 
   final client = Client();
-  final baseURL = " https://hacker-news.firebaseio.com/v0";
+  final baseURL = "https://hacker-news.firebaseio.com/v0";
   
   Future<List<int>> fetchTopIds() async{
     final response = await client.get("$baseURL/topstories.json");

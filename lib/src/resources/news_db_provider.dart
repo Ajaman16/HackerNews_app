@@ -29,6 +29,7 @@ class NewsDbProvider implements Source, Cache{
             type TEXT,
             by TEXT,
             time INTEGER,
+            text TEXT,
             dead INTEGER,
             parent INTEGER,
             kids BLOB,
@@ -60,13 +61,21 @@ class NewsDbProvider implements Source, Cache{
   }
 
   Future<int> addItem(ItemModel item){
-    return db.insert("Items", item.toMapforDb());
+    return db.insert(
+        "Items",
+        item.toMapforDb(),
+        conflictAlgorithm: ConflictAlgorithm.ignore
+    );
   }
 
   @override
   Future<List<int>> fetchTopIds() {
     // TODO: implement fetchTopIds
     return null;
+  }
+
+  Future<int> clear(){
+    return db.delete("Items");
   }
 
 }

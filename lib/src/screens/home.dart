@@ -11,7 +11,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final block = StoriesProvider.of(context);
-    block.fetchTopIds();
+    //block.fetchTopIds();
 
     return Scaffold(
       appBar: AppBar(
